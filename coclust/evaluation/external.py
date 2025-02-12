@@ -31,9 +31,9 @@ def accuracy(true_row_labels, predicted_row_labels):
 
     cm = confusion_matrix(true_row_labels, predicted_row_labels)
     # deprecated: indexes = linear_assignment(_make_cost_m(cm))
-    indexes = linear_sum_assignment(_make_cost_m(cm))
+    idx_x, idx_y = linear_sum_assignment(_make_cost_m(cm))
     total = 0
-    for row, column in indexes:
+    for row, column in zip(idx_x, idx_y):
         value = cm[row][column]
         total += value
 
